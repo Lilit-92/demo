@@ -7,7 +7,6 @@ import horse from './Lesson1/photo/hors.jpg';
 import rabbit from './Lesson1/photo/rabbit.jpg';
 import Counter from './Lesson2/Counter';
 
-
 function App() {
   return (
     <div>

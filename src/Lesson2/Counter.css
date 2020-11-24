@@ -39,6 +39,9 @@ body{
     text-shadow: 1px 1px 3px black;
     
 }
+.disabled{
+    background-color: rgba(1, 15, 15, 0.5);
+}
 
 .dec:hover , .inc:hover{
     color: grey;

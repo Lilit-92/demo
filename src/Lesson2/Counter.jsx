@@ -10,49 +10,45 @@ class Counter extends Component{
 
     state={
         num: 1,
+        attr:'',
     }
 
     Decrease(type){
         if (type==="decrease") {
            
-            if (this.state.num===1||this.state.num===0) { 
+            if (this.state.num<=1) { 
+                this.setState({       
+                    num:this.state.num-1,
+                    attr: "disabled",
+
+                })   
+            }
+            else{
                 this.setState({       
                     num:this.state.num-1
                 })
-                
-                document.getElementsByClassName("dec")[0].setAttribute("disabled", "disabled");     
-            }
-            else{
-            
-            this.setState({       
-                num:this.state.num-1
-            })
-        }
-           
+            }   
         }
         else if(type==="increase"){               
-                if (this.state.num===0) {
-                    document.getElementsByClassName("disabled")[0].removeAttribute("disabled")
-                }
             this.setState({       
-                num:this.state.num+1
+                num:this.state.num+1,
+                attr:"",
             })
         }
         else{
             this.setState({       
                 num:0,
+                attr: "disabled",
             })
-                document.getElementsByClassName("dec")[0].setAttribute("disabled", "disabled");
         }
     };
 
 
     render(){
         return(
-            <>
             <div className="parent">
                 <div>
-                    <button onClick={()=>this.Decrease("decrease")} className={this.state.num<=0?"disabled":"dec"}>-</button>
+                    <button disabled={this.state.attr} onClick={()=>this.Decrease("decrease")} className={this.state.num<=0?"disabled":"dec"}>-</button>
                 </div>
                 <div>
                     <p className="num">{this.state.num}</p>
@@ -63,8 +59,6 @@ class Counter extends Component{
                 <div className="reset"><button onClick={()=>this.Decrease("reset")}>Reset</button></div>
                 
             </div>
-           
-            </>
         )
     }
 }
